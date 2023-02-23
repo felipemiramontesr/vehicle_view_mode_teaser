@@ -1,0 +1,8 @@
+name: Vehicle View Mode Teaser
+description: Allow users to set a Vehicle View Mode Teaser in Vehicle Content Type.
+package: Vehicle Fleet
+
+type: module
+core_version_requirement: ^8 || ^9 || ^10
+libraries: -vehicle_view_mode_teaser/js
+  -vehicle_view_mode_teaser/css

@@ -1,0 +1,8 @@
+vehicle_view_mode_teaser-styles:
+  css:
+    theme:
+      css/styles.css: {}
+  js:
+    js/scripts.js: {}
+  dependencies:
+    - core/jquery

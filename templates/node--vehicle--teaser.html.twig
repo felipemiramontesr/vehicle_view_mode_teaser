@@ -1,0 +1,70 @@
+{{ attach_library("vehicle_view_mode_teaser/vehicle_view_mode_teaser-styles") }}
+{% set legalId = node.title.value %} {% set brand = node.field_brand.value %} {%
+set model = node.field_model.value %} {% set year = node.field_year.value %} {%
+set status = node.field_status.value %}
+
+<div class="card">
+  <div class="card-header">
+    <div id="row-one" class="row-one">
+      <div id="title" class="title">
+        <span id="brand" class="brand">
+          {{ brand }}
+        </span>
+        <span id="model" class="model">
+          {{ model }}
+        </span>
+        <span id="year" class="year">
+          {{ year }}
+        </span>
+      </div>
+      <div id="id" class="id">
+        {{"Clave única: " ~ node.id}}
+      </div>
+    </div>
+    <div id="row-two" class="row-two">
+      <div id="created_date" class="created_date">
+        {{ node.createdtime|format_date('medium') }}
+      </div>
+      <div id="header-status" class="header-status">
+        {{ status }}
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    {% if node.title.value %}
+    <div class="card-label">Número de placas:</div>
+    <div class="card-value">
+      <a href="{{ path('entity.node.canonical', { node: node.id }) }}">{{
+        node.title.value
+      }}</a>
+    </div>
+    {% endif %}
+    <div class="card-label">Marca:</div>
+    <div class="card-value">{{ brand }}</div>
+    <div class="card-label">Modelo:</div>
+    <div class="card-value">{{ model }}</div>
+    <div class="card-label">Año:</div>
+    <div class="card-value">{{ year }}</div>
+    <div class="card-label">Fotografia del vehículo:</div>
+    <div class="card-value">
+      {% if node.field_cover.value %}
+      <img
+        src="{{
+          file_url(node.field_cover.entity.field_media_image.entity.fileuri)
+        }}"
+        alt="{{ node.field_cover.entity.field_media_image.alt }}"
+      />
+      {% endif %}
+    </div>
+    <div class="card-label">Estatus:</div>
+    <div class="card-value">{{ status }}</div>
+    {% if node.field_responsible %}
+    <div class="card-label">Responsable:</div>
+    <div class="card-value">{{ content.field_responsible }}</div>
+    {% endif %}
+
+    <div class="card-label">Description</div>
+    <div class="card-value">{{ content.body }}</div>
+  </div>
+</div>

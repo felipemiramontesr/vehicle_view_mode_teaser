@@ -1,0 +1,10 @@
+<?php
+function vehicle_view_mode_teaser_theme($existing, $type, $theme, $path) {
+  return [
+    'node__vehicle__teaser' => [
+      'template' => 'node--vehicle--teaser',
+      'base hook' => 'node',
+    ],
+  ];
+}
+?>
